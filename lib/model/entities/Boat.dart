@@ -10,7 +10,7 @@ class Boat {
     Boat(this.type, this.length);
 
     Boat.fromJson(Map boatJson) {
-        type = new BoatType.fromValue(boatJson[TYPE]);
+        type = new BsonInt(new BoatType.fromValue(boatJson[TYPE]));
         length = new BsonDouble(boatJson[LENGTH]);
     }
 

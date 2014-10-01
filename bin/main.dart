@@ -11,8 +11,8 @@ main() {
         ]);
 
     MemberRepository test = injector.get(MemberRepository);
-    //test.add(new Member('Rasmus', 'test'));
-    test.getAll().then((members) => members.forEach((member) {
+    test.add(new Member('Rasmus', 'test')..boats.add(new Boat(BoatType.MOTORBOAT, 6.5)));
+    /*test.getAll().then((members) => members.forEach((member) {
         print ('Member ${member.name} ${member.socialSecurityNumber} ${member.memberNumber}');
-    }));
+    }));*/
 }
