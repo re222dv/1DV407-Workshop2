@@ -10,7 +10,7 @@ part 'controller/MemberController.dart';
 
 part 'model/entities/Boat.dart';
 part 'model/entities/BoatType.dart';
-part 'model/entities/Member2.dart';
+part 'model/entities/Member.dart';
 
 part 'model/repositories/MemberRepository.dart';
 part 'model/repositories/Repository.dart';
