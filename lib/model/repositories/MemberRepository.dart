@@ -5,12 +5,11 @@ class MemberRepository extends Repository {
 
     MemberRepository(Db db):super(db);
 
-    add(Member member) {
+    Future add(Member member) =>
         db.open()
             .then((_) =>
                 db.collection(COLLECTION_NAME).insert(member.toJson()))
             .then((_) => db.close());
-    }
 
     Future<Iterable<Member>> getAll() =>
         db.open().then((_) {
