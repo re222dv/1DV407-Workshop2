@@ -1,0 +1,4 @@
+name: ooad-w2
+dependencies:
+  di: any
+  mongo_dart: any
