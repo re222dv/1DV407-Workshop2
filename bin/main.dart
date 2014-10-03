@@ -10,8 +10,9 @@ main() {
                 ..bind(Db, toValue: db)
         ]);
 
-    MemberRepository test = injector.get(MemberRepository);
-    test.add(new Member('Rasmus', 'test')..boats.add(new Boat(BoatType.MOTORBOAT, 6.5)));
+    MemberListController test = injector.get(MemberListController);
+    test.run();
+    //test.add(new Member('Rasmus', 'test')..boats.add(new Boat(BoatType.MOTORBOAT, 6.5)));
     /*test.getAll().then((members) => members.forEach((member) {
         print ('Member ${member.name} ${member.socialSecurityNumber} ${member.memberNumber}');
     }));*/
