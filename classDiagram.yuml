@@ -1,11 +1,30 @@
+// Controllers
+[MemberController||run(member:Member)]
 [MemberListController||run()]
-[MemberRepository||add()]
-[MemberRepository||getAll()]
-[MemberListView||renderCompact(memberList)]
-[MemberListView||renderDetailed(memberList)]
-[BoatView||render(boat)]
 
+// Model.Entities
+[Member|name;socialSecurityNumber;memberNumber]
+[Boat|type:BoatType;length]
+[<<enumeration>>;BoatType|SAILBOAT;MOTORSAILOR;MOTORBOAT;CANOE;OTHER]
+
+// Model.Repositories
+[MemberRepository||add(member:Member);getAll():List<Member>]
+
+// Views
+[BoatView||render(boat:Boat)]
+[MemberView||render(member:Member)]
+[MemberListView||renderCompact(memberList:List<Member>);renderDetailed(memberList:List<Member>)]
+
+// Associations
+[MemberController]-[MemberView]
+[MemberListController]-[MemberController]
 [MemberListController]-[MemberRepository]
 [MemberListController]-[MemberListView]
+
+[Member]-boats-*[Boat]
+
+[MemberView]-[BoatView]
 [MemberListView]-[BoatView]
+
+// Inheritance
 [Repository]^-[MemberRepository]
