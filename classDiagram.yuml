@@ -1,0 +1,11 @@
+[MemberListController||run()]
+[MemberRepository||add()]
+[MemberRepository||getAll()]
+[MemberListView||renderCompact(memberList)]
+[MemberListView||renderDetailed(memberList)]
+[BoatView||render(boat)]
+
+[MemberListController]-[MemberRepository]
+[MemberListController]-[MemberListView]
+[MemberListView]-[BoatView]
+[Repository]^-[MemberRepository]

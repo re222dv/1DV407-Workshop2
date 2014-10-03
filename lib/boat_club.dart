@@ -1,6 +1,7 @@
 library boat_club;
 
 import 'dart:async';
+import 'dart:io';
 import 'package:di/di.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
@@ -17,6 +18,7 @@ part 'model/repositories/MemberRepository.dart';
 part 'model/repositories/Repository.dart';
 
 part 'view/BoatView.dart';
+part 'view/MemberView.dart';
 part 'view/MemberListView.dart';
 
 class BoatClubModule extends Module {
@@ -29,6 +31,7 @@ class BoatClubModule extends Module {
         bind(MemberRepository);
 
         bind(BoatView);
+        bind(MemberView);
         bind(MemberListView);
     }
 }
