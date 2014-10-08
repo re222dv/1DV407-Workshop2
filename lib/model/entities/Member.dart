@@ -6,12 +6,30 @@ class Member {
     static const MEMBER_NUMBER = 'memberNumber';
     static const BOATS = 'boats';
 
-    String name;
-    String socialSecurityNumber;
+    String _name;
+    String _socialSecurityNumber;
     int memberNumber;
     List<Boat> boats = [];
 
-    Member(this.name, this.socialSecurityNumber) {
+    String get name => _name;
+    set name(String name) {
+        if (name == null || name.trim().isEmpty) {
+            throw new ArgumentError('Name can not be empty');
+        }
+
+        _name = name;
+    }
+
+    String get socialSecurityNumber => _socialSecurityNumber;
+    set socialSecurityNumber(String socialSecurityNumber) {
+        if (socialSecurityNumber == null || socialSecurityNumber.trim().isEmpty) {
+            throw new ArgumentError('Social secutiry number can not be empty');
+        }
+
+        _socialSecurityNumber = socialSecurityNumber;
+    }
+
+    Member.empty() {
         memberNumber = new DateTime.now().millisecondsSinceEpoch;
     }
 
@@ -28,7 +46,7 @@ class Member {
     Map toJson() => {
         NAME: name,
         SOCIAL_SECURITY_NUMBER: socialSecurityNumber,
-        MEMBER_NUMBER: new BsonLong(memberNumber),
+        MEMBER_NUMBER: memberNumber,
         BOATS: boats.map((boat) => boat.toJson()).toList(),
     };
 }

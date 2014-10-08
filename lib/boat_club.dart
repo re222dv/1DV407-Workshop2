@@ -9,6 +9,7 @@ import 'package:optional/optional.dart';
 part 'controller/BoatController.dart';
 part 'controller/MainController.dart';
 part 'controller/MemberController.dart';
+part 'controller/MemberAdministerController.dart';
 part 'controller/MemberListController.dart';
 
 part 'model/entities/Boat.dart';
@@ -21,6 +22,7 @@ part 'model/repositories/Repository.dart';
 part 'view/BoatView.dart';
 part 'view/MainView.dart';
 part 'view/MemberView.dart';
+part 'view/MemberAdministerView.dart';
 part 'view/MemberListView.dart';
 
 class BoatClubModule extends Module {
@@ -28,6 +30,7 @@ class BoatClubModule extends Module {
         bind(BoatController);
         bind(MainController);
         bind(MemberController);
+        bind(MemberAdministerController);
         bind(MemberListController);
 
         bind(MemberRepository);
@@ -35,6 +38,7 @@ class BoatClubModule extends Module {
         bind(BoatView);
         bind(MainView);
         bind(MemberView);
+        bind(MemberAdministerView);
         bind(MemberListView);
     }
 }

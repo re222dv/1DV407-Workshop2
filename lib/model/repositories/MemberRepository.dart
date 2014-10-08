@@ -5,19 +5,35 @@ class MemberRepository extends Repository {
 
     MemberRepository(Db db):super(db);
 
-    Future add(Member member) =>
-        db.open()
+    Map _databaseSecure(Map json) {
+        Map secure = {};
+
+        json.keys.forEach((key) {
+            var value = json[key];
+            if (value is int) {
+                secure[key] = new BsonLong(value);
+            } else {
+                secure[key] = value;
+            }
+        });
+    }
+
+    Future save(Member oldMember, Member updatedMember) {
+        return openDb()
             .then((_) =>
-                db.collection(COLLECTION_NAME).insert(member.toJson()))
-            .whenComplete(db.close);
+                db.collection(COLLECTION_NAME).update({Member.MEMBER_NUMBER: oldMember.memberNumber},
+                                                      updatedMember.toJson(),
+                                                      upsert: true));
+    }
 
     Future<Iterable<Member>> getAll() =>
-        db.open().then((_) {
-            var members = [];
+        openDb()
+            .then((_) {
+                var members = [];
 
-            return db.collection(COLLECTION_NAME)
-                .find()
-                    .forEach((memberJson) => members.add(new Member.fromJson(memberJson)))
-                    .then((_) => members);
-        }).whenComplete(db.close);
+                return db.collection(COLLECTION_NAME)
+                    .find()
+                        .forEach((memberJson) => members.add(new Member.fromJson(memberJson)))
+                        .then((_) => members);
+            });
 }

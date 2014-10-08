@@ -8,8 +8,8 @@ class MemberListController {
     MemberListController(this._memberController, this._memberListView, this._memberRepository);
 
     run({bool detailed: false}) =>
-        _memberRepository.getAll().then((memberList) {
-            while(true) {
+        Future.doWhile(() =>
+            _memberRepository.getAll().then((memberList) {
                 if (detailed) {
                     _memberListView.renderDetailed(memberList);
                 } else {
@@ -19,10 +19,10 @@ class MemberListController {
                 var member = _memberListView.getChosenMember(memberList.toList());
 
                 if (member.isPresent) {
-                    _memberController.run(member.value);
+                    return _memberController.run(member.value).then((_) => true);
                 } else {
                     return;
                 }
-            }
-        });
+            })
+        );
 }

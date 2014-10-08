@@ -40,7 +40,7 @@ class MemberListView {
         var count = 0;
         memberList.forEach((member) {
             count += 1;
-            print('$count. ${member.name}: ${member.memberNumber} ${member.boats.length}');
+            print('$count. ${member.name}: ${member.memberNumber} num boats: ${member.boats.length}');
         });
     }
 
