@@ -1,4 +1,11 @@
 name: ooad-w2
 dependencies:
+  async_await:
+    git: https://github.com/dart-lang/async_await.git
   di: any
   mongo_dart: any
+  optional: any
+transformers:
+- async_await
+dependency_overrides:
+  analyzer: 0.22.4

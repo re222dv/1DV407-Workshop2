@@ -1,30 +1,27 @@
 part of boat_club;
 
 class MainController {
-    MemberListController memberListController;
-    MainView mainView;
+    MemberListController _memberListController;
+    MainView _mainView;
 
-    MainController(this.memberListController, this.mainView);
+    MainController(this._memberListController, this._mainView);
 
-    run() {
-        while (true) {
-            mainView.render();
+    run() =>
+        Future.doWhile(() {
+            _mainView.render();
 
-            switch (mainView.getChosenMenuItem()) {
+            switch (_mainView.getChosenMenuItem()) {
                 case MainViewMenuItem.COMPACT_LIST:
-                    memberListController.run();
-                    break;
+                    return _memberListController.run().then((_) => true);
 
                 case MainViewMenuItem.DETAILED_LIST:
-                    memberListController.run();
-                    break;
+                    return _memberListController.run(detailed: true).then((_) => true);
 
                 case MainViewMenuItem.QUIT:
-                    return;
+                    return false;
 
                 default:
                     throw new UnimplementedError('The chosen menu item not implemented in MainController');
             }
-        }
-    }
+        });
 }

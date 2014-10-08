@@ -4,15 +4,22 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.21.1"
+    version: "0.22.4"
   args:
     description: args
     source: hosted
-    version: "0.11.0+1"
+    version: "0.12.0+2"
+  async_await:
+    description:
+      ref: null
+      resolved-ref: c3685de7d188f99c797aeb04d8e1c2d3ef6f0a9f
+      url: "https://github.com/dart-lang/async_await.git"
+    source: git
+    version: "0.0.0"
   barback:
     description: barback
     source: hosted
-    version: "0.15.0+1"
+    version: "0.15.2+2"
   bson:
     description: bson
     source: hosted
@@ -24,7 +31,7 @@ packages:
   collection:
     description: collection
     source: hosted
-    version: "0.9.4"
+    version: "1.0.0"
   crypto:
     description: crypto
     source: hosted
@@ -32,7 +39,7 @@ packages:
   di:
     description: di
     source: hosted
-    version: "3.0.0"
+    version: "3.3.1"
   fixnum:
     description: fixnum
     source: hosted
@@ -53,6 +60,10 @@ packages:
     description: more
     source: hosted
     version: "1.3.2"
+  optional:
+    description: optional
+    source: hosted
+    version: "1.2.2"
   path:
     description: path
     source: hosted
@@ -72,7 +83,7 @@ packages:
   stack_trace:
     description: stack_trace
     source: hosted
-    version: "0.9.3+2"
+    version: "1.1.1"
   watcher:
     description: watcher
     source: hosted

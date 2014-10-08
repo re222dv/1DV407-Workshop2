@@ -6,7 +6,7 @@ class MemberListView {
 
     MemberListView(this._boatView);
 
-    Member getChosenMember(List<Member> memberList) {
+    Optional<Member> getChosenMember(List<Member> memberList) {
         print('Enter a number to view coresponding member:');
 
         var input;
@@ -14,6 +14,10 @@ class MemberListView {
 
         do {
             input = stdin.readLineSync();
+
+            if (input == 'r') {
+                return new Optional.empty();
+            }
 
             try {
                 input = int.parse(input);
@@ -29,7 +33,7 @@ class MemberListView {
             }
         } while(!validInput);
 
-        return memberList[input - 1];
+        return new Optional.of(memberList[input - 1]);
     }
 
     renderCompact(Iterable<Member> memberList) {
@@ -43,6 +47,7 @@ class MemberListView {
         memberList.forEach((member) {
             count += 1;
             print('\n$count. ${member.name}(${member.socialSecurityNumber}): ${member.memberNumber}');
+            print('Press r to return');
 
             member.boats.forEach((boat) => _boatView.render(boat));
         });

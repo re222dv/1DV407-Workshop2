@@ -9,7 +9,7 @@ class MemberRepository extends Repository {
         db.open()
             .then((_) =>
                 db.collection(COLLECTION_NAME).insert(member.toJson()))
-            .then((_) => db.close());
+            .whenComplete(db.close);
 
     Future<Iterable<Member>> getAll() =>
         db.open().then((_) {
@@ -19,5 +19,5 @@ class MemberRepository extends Repository {
                 .find()
                     .forEach((memberJson) => members.add(new Member.fromJson(memberJson)))
                     .then((_) => members);
-        });
+        }).whenComplete(db.close);
 }
