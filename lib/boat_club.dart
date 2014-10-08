@@ -6,7 +6,7 @@ import 'package:di/di.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 part 'controller/BoatController.dart';
-part 'controller/MasterController.dart';
+part 'controller/MainController.dart';
 part 'controller/MemberController.dart';
 part 'controller/MemberListController.dart';
 
@@ -18,19 +18,21 @@ part 'model/repositories/MemberRepository.dart';
 part 'model/repositories/Repository.dart';
 
 part 'view/BoatView.dart';
+part 'view/MainView.dart';
 part 'view/MemberView.dart';
 part 'view/MemberListView.dart';
 
 class BoatClubModule extends Module {
     BoatClubModule() {
         bind(BoatController);
-        bind(MasterController);
+        bind(MainController);
         bind(MemberController);
         bind(MemberListController);
 
         bind(MemberRepository);
 
         bind(BoatView);
+        bind(MainView);
         bind(MemberView);
         bind(MemberListView);
     }
