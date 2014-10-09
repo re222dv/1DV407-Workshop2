@@ -1,23 +1,12 @@
 part of boat_club;
 
 class BoatAdministerView {
+    BoatView _boatView;
 
-    administer(Boat boat) {/*
-        while (true) {
-            print('Set name: [${member.name}]');
+    BoatAdministerView(this._boatView);
 
-            var input = stdin.readLineSync();
-            if (input.isEmpty) {
-                input = member.name;
-            }
-            try {
-                member.name = input;
-                break;
-            } catch(_) {
-                print('You must enter a name');
-            }
-        }*/
-        boat.type = BoatType.CANOE;
+    administer(Boat boat) {
+        boat.type = _boatView.chooseType();
 
         while (true) {
             print('Set length: [${boat.length}]');
