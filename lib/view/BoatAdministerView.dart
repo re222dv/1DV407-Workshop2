@@ -9,16 +9,20 @@ class BoatAdministerView {
         boat.type = _boatView.chooseType();
 
         while (true) {
-            print('Set length: [${boat.length}]');
+            if (boat.length) {
+                print('Set length in meters:');
+            } else {
+                print('Set length in meters: [${boat.length}]');
+            }
 
             var input = stdin.readLineSync();
             if (input.isEmpty) {
-                input = boat.length;
+                input = boat.length.toString();
             }
             try {
                 boat.length = double.parse(input);
                 break;
-            } catch(_) {
+            } on FormatException catch(_) {
                 print('Length must be a number');
             }
         }

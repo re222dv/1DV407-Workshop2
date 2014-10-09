@@ -40,12 +40,10 @@ class Member {
         socialSecurityNumber = memberJson[SOCIAL_SECURITY_NUMBER];
         memberNumber = memberJson[MEMBER_NUMBER];
 
-        memberJson[BOATS].forEach((boatJson) {
-            boats.add(new Boat.fromJson(boatJson));
-        });
+        memberJson[BOATS].forEach((boatJson) => boats.add(new Boat.fromJson(boatJson)));
     }
 
-    Member copy() => new Member.fromJson(this.toJson());
+    Member clone() => new Member.fromJson(this.toJson());
 
     Map toJson() => {
         NAME: name,

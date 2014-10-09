@@ -7,7 +7,11 @@ class MemberListController {
 
     MemberListController(this._memberController, this._memberListView, this._memberRepository);
 
-    run({bool detailed: false}) =>
+    Future run({bool detailed: false}) =>
+        /*
+            Loop until false is returned by the callback. If the callback returns
+            a future, it waits for it to complete before using its result.
+         */
         Future.doWhile(() =>
             _memberRepository.getAll().then((memberList) {
                 if (detailed) {
@@ -20,8 +24,9 @@ class MemberListController {
 
                 if (member.isPresent) {
                     return _memberController.run(member.value).then((_) => true);
+                    // Continue looping by returning true when run completes
                 } else {
-                    return;
+                    return false; // Stop looping by returning false
                 }
             })
         );

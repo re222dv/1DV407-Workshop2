@@ -7,7 +7,7 @@ class BoatAdministerController {
     BoatAdministerController(this._memberRepository, this._boatAdministerView);
 
     add(Member member) {
-        var oldMember = new Member.fromJson(member.toJson()); // Clone member
+        var oldMember = member.clone();
         var boat = new Boat.empty();
 
         _boatAdministerView.administer(boat);
@@ -17,15 +17,15 @@ class BoatAdministerController {
     }
 
     update(Member member, Boat boat) {
-        var oldMember = new Member.fromJson(member.toJson()); // Clone member
+        var oldMember = member.clone();
 
-        _boatAdministerView.administer(member);
+        _boatAdministerView.administer(boat);
 
         return _memberRepository.update(oldMember, member);
     }
 
     delete(Member member, Boat boat) {
-        var oldMember = new Member.fromJson(member.toJson()); // Clone member
+        var oldMember = member.clone();
 
         member.boats.remove(boat);
 

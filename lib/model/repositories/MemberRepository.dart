@@ -30,11 +30,14 @@ class MemberRepository extends Repository {
             .then((_) =>
                 db.collection(COLLECTION_NAME).remove(member.toJson()));
 
-    Future update(Member oldMember, Member updatedMember) =>
-        openDb()
+    Future update(Member oldMember, Member updatedMember) {
+        print(_databaseSecure(oldMember.toJson()));
+        print(_databaseSecure(updatedMember.toJson()));
+        return openDb()
             .then((_) =>
-                db.collection(COLLECTION_NAME).update(oldMember.toJson(),
+                db.collection(COLLECTION_NAME).update(_databaseSecure(oldMember.toJson()),
                                                       _databaseSecure(updatedMember.toJson())));
+    }
 
     Future<Iterable<Member>> getAll() =>
         openDb()

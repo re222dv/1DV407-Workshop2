@@ -35,13 +35,13 @@ class BoatView {
                 } else {
                     return _BOAT_TYPE_NAMES.keys.toList()[pick - 1];
                 }
-            } on FormatException catch (_) {
+            } on FormatException catch(_) {
                 print('Enter the number corresponding to the boattype');
             }
         }
     }
 
-    render(Boat boat) {
-        print('    ${_BOAT_TYPE_NAMES[boat.type]}: ${boat.length} m');
+    render(Boat boat, [String prefix = '']) {
+        print('$prefix${_BOAT_TYPE_NAMES[boat.type]}: ${boat.length} m');
     }
 }

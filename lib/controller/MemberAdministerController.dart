@@ -6,25 +6,21 @@ class MemberAdministerController {
 
     MemberAdministerController(this._memberRepository, this._memberAdministerView);
 
-    run([Member member = null]) {
-        var creating = false;
-        var oldMember;
-
-        if (member == null) {
-            member = new Member.empty();
-            creating = true;
-        } else {
-            var oldMember = new Member.fromJson(member.toJson()); // Clone member
-        }
+    Future add() {
+        var member = new Member.empty();
 
         _memberAdministerView.administer(member);
 
-        if (creating) {
-            return _memberRepository.add(member);
-        } else {
-            return _memberRepository.update(oldMember, member);
-        }
+        return _memberRepository.add(member);
     }
 
-    delete(Member member) => _memberRepository.delete(member);
+    Future update(Member member) {
+        var oldMember = member.clone();
+
+        _memberAdministerView.administer(member);
+
+        return _memberRepository.update(oldMember, member);
+    }
+
+    Future delete(Member member) => _memberRepository.delete(member);
 }

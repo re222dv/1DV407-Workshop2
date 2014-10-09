@@ -6,7 +6,7 @@ class MainView {
         print('Enter a number for the menu item:');
 
         while (true) {
-            var input = stdin.readLineSync();
+            var input = stdin.readLineSync().toLowerCase();
 
             switch (input) {
                 case '1':
@@ -16,8 +16,7 @@ class MainView {
                 case '3':
                     return MainViewMenuItem.NEW_MEMBER;
                 case 'q':
-                case 'Q':
-                    exit(0);
+                    return MainViewMenuItem.QUIT;
                 default:
                     print('The chosen menu item does not exist');
             }

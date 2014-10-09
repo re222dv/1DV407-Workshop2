@@ -13,9 +13,9 @@ class MemberListView {
         var validInput = false;
 
         do {
-            input = stdin.readLineSync();
+            input = stdin.readLineSync().toLowerCase();
 
-            if (['r', 'R'].contains(input)) {
+            if (input == 'r') {
                 return new Optional.empty();
             }
 
@@ -58,7 +58,7 @@ class MemberListView {
             count += 1;
             print('$count. ${member.name}(${member.socialSecurityNumber}): ${member.memberNumber}');
 
-            member.boats.forEach((boat) => _boatView.render(boat));
+            member.boats.forEach((boat) => _boatView.render(boat, '    '));
 
             print('');
         });

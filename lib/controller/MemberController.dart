@@ -9,7 +9,7 @@ class MemberController {
                      this._memberAdministerController,
                      this._memberView);
 
-    run(Member member) =>
+    Future run(Member member) =>
         /*
             Loop until false is returned by the callback. If the callback returns
             a future, it waits for it to complete before using its result.
@@ -19,22 +19,29 @@ class MemberController {
 
             switch (_memberView.getChosenMenuItem()) {
                 case MemberViewMenuItem.EDIT:
-                    return _memberAdministerController.run(member).then((_) => true);
-                    /*
-                        Continue looping by returning true when the run completes
-                     */
+                    return _memberAdministerController.update(member).then((_) => true);
+                    // Continue looping by returning true when run completes
 
                 case MemberViewMenuItem.DELETE:
                     return _memberAdministerController.delete(member).then((_) => false);
-                    /*
-                        Stop looping by returning false when delete completes
-                     */
+                    // Stop looping by returning false when delete completes
 
                 case MemberViewMenuItem.ADD_BOAT:
-                    return _boatAdministerController.add(member).then((_) => false);
+                    return _boatAdministerController.add(member).then((_) => true);
+                    // Continue looping by returning true when add completes
+
+                case MemberViewMenuItem.EDIT_BOAT:
+                    var boat = _memberView.getChosenBoat(member.boats);
+                    return _boatAdministerController.update(member, boat).then((_) => true);
+                    // Continue looping by returning true when update completes
+
+                case MemberViewMenuItem.DELETE_BOAT:
+                    var boat = _memberView.getChosenBoat(member.boats);
+                    return _boatAdministerController.delete(member, boat).then((_) => true);
+                    // Continue looping by returning true when delete completes
 
                 case MemberViewMenuItem.RETURN:
-                    return false;
+                    return false; // Stop looping by returning false
 
                 default:
                     throw new UnimplementedError('The chosen menu item is not implemented in MemberController');

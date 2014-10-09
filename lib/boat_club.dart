@@ -6,7 +6,6 @@ import 'package:di/di.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:optional/optional.dart';
 
-part 'controller/BoatController.dart';
 part 'controller/BoatAdministerController.dart';
 part 'controller/MainController.dart';
 part 'controller/MemberController.dart';
@@ -29,7 +28,6 @@ part 'view/MemberListView.dart';
 
 class BoatClubModule extends Module {
     BoatClubModule() {
-        bind(BoatController);
         bind(BoatAdministerController);
         bind(MainController);
         bind(MemberController);
