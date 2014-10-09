@@ -32,13 +32,19 @@ class MemberController {
 
                 case MemberViewMenuItem.EDIT_BOAT:
                     var boat = _memberView.getChosenBoat(member.boats);
-                    return _boatAdministerController.update(member, boat).then((_) => true);
-                    // Continue looping by returning true when update completes
+                    if (boat != null) {
+                        return _boatAdministerController.update(member, boat).then((_) => true);
+                        // Continue looping by returning true when update completes
+                    }
+                    return true; // Continue looping by returning true
 
                 case MemberViewMenuItem.DELETE_BOAT:
                     var boat = _memberView.getChosenBoat(member.boats);
-                    return _boatAdministerController.delete(member, boat).then((_) => true);
-                    // Continue looping by returning true when delete completes
+                    if (boat != null) {
+                        return _boatAdministerController.delete(member, boat).then((_) => true);
+                        // Continue looping by returning true when update completes
+                    }
+                    return true; // Continue looping by returning true
 
                 case MemberViewMenuItem.RETURN:
                     return false; // Stop looping by returning false

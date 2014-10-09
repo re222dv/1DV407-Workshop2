@@ -7,9 +7,13 @@ class MemberView {
 
     Boat getChosenBoat(List<Boat> boats) {
         while (true) {
-            print('Enter number to select the corresponding boat:');
+            print('Enter number to select the corresponding boat or R to return:');
 
-            var input = stdin.readLineSync();
+            var input = stdin.readLineSync().toLowerCase();
+
+            if (input == 'r') {
+                return null;
+            }
 
             try {
                 var chosenBoat = int.parse(input);
