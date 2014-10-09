@@ -38,19 +38,29 @@ class MemberListView {
 
     renderCompact(Iterable<Member> memberList) {
         var count = 0;
+
+        print('  #                 Name        Member Number     Boats\n');
+
         memberList.forEach((member) {
             count += 1;
-            print('$count. ${member.name}: ${member.memberNumber} num boats: ${member.boats.length}');
+            print('${count.toString().padLeft(3)} '
+                  '${member.name.padLeft(20)} '
+                  '${member.memberNumber.toString().padLeft(20)} '
+                  '${member.boats.length.toString().padLeft(5)}');
         });
+
+        print('');
     }
 
     renderDetailed(Iterable<Member> memberList) {
         var count = 0;
         memberList.forEach((member) {
             count += 1;
-            print('\n$count. ${member.name}(${member.socialSecurityNumber}): ${member.memberNumber}');
+            print('$count. ${member.name}(${member.socialSecurityNumber}): ${member.memberNumber}');
 
             member.boats.forEach((boat) => _boatView.render(boat));
+
+            print('');
         });
     }
 }
