@@ -15,8 +15,7 @@ class MemberController {
                     return _memberAdministerController.run(member).then((_) => true);
 
                 case MemberViewMenuItem.DELETE:
-                    // TODO
-                    return _memberListController.run(detailed: true).then((_) => true);
+                    return _memberAdministerController.delete(member).then((_) => false);
 
                 case MemberViewMenuItem.RETURN:
                     return false;

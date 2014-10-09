@@ -25,4 +25,6 @@ class MemberAdministerController {
             return _memberRepository.update(oldMember, member);
         }
     }
+
+    delete(Member member) => _memberRepository.delete(member);
 }

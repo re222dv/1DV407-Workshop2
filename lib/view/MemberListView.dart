@@ -7,7 +7,7 @@ class MemberListView {
     MemberListView(this._boatView);
 
     Optional<Member> getChosenMember(List<Member> memberList) {
-        print('Enter a number to view coresponding member or r to return:');
+        print('Enter a number to view coresponding member or R to return:');
 
         var input;
         var validInput = false;

@@ -33,7 +33,7 @@ class MemberView {
         member.boats.forEach((boat) => _boatView.render(boat));
 
         print('');
-        print('Enter E to edit the member, D to delete or r to return');
+        print('Enter E to edit the member, D to delete or R to return');
     }
 }
 

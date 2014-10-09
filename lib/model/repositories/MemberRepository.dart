@@ -25,6 +25,11 @@ class MemberRepository extends Repository {
             .then((_) =>
                 db.collection(COLLECTION_NAME).insert(_databaseSecure(member.toJson())));
 
+    Future delete(Member member) =>
+        openDb()
+            .then((_) =>
+                db.collection(COLLECTION_NAME).remove(member.toJson()));
+
     Future update(Member oldMember, Member updatedMember) =>
         openDb()
             .then((_) =>
