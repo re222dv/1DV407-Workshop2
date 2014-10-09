@@ -17,7 +17,7 @@ class MainView {
                     return MainViewMenuItem.NEW_MEMBER;
                 case 'q':
                 case 'Q':
-                    return MainViewMenuItem.QUIT;
+                    exit(0);
                 default:
                     print('The chosen menu item does not exist');
             }

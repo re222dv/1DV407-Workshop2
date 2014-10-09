@@ -12,7 +12,6 @@ main() {
 
     var mainController = injector.get(MainController);
     mainController.run();
-    print('program done');
     //test.add(new Member('Rasmus', 'test')..boats.add(new Boat(BoatType.MOTORBOAT, 6.5)));
     /*test.getAll().then((members) => members.forEach((member) {
         print ('Member ${member.name} ${member.socialSecurityNumber} ${member.memberNumber}');

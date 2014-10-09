@@ -30,6 +30,8 @@ class Member {
     }
 
     Member.empty() {
+        _name = '';
+        _socialSecurityNumber = '';
         memberNumber = new DateTime.now().millisecondsSinceEpoch;
     }
 

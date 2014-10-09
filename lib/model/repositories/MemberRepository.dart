@@ -16,15 +16,20 @@ class MemberRepository extends Repository {
                 secure[key] = value;
             }
         });
+
+        return secure;
     }
 
-    Future save(Member oldMember, Member updatedMember) {
-        return openDb()
+    Future add(Member member) =>
+        openDb()
             .then((_) =>
-                db.collection(COLLECTION_NAME).update({Member.MEMBER_NUMBER: oldMember.memberNumber},
-                                                      updatedMember.toJson(),
-                                                      upsert: true));
-    }
+                db.collection(COLLECTION_NAME).insert(_databaseSecure(member.toJson())));
+
+    Future update(Member oldMember, Member updatedMember) =>
+        openDb()
+            .then((_) =>
+                db.collection(COLLECTION_NAME).update(oldMember.toJson(),
+                                                      _databaseSecure(updatedMember.toJson())));
 
     Future<Iterable<Member>> getAll() =>
         openDb()
