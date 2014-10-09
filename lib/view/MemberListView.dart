@@ -26,7 +26,7 @@ class MemberListView {
                 continue;
             }
 
-            if (input > 0 || input <= memberList.length) {
+            if (input > 0 && input <= memberList.length) {
                 validInput = true;
             } else {
                 print('The chosen number is outside of the range');
@@ -39,12 +39,12 @@ class MemberListView {
     renderCompact(Iterable<Member> memberList) {
         var count = 0;
 
-        print('  #                 Name        Member Number     Boats\n');
+        print('  #                           Name        Member Number     Boats\n');
 
         memberList.forEach((member) {
             count += 1;
             print('${count.toString().padLeft(3)} '
-                  '${member.name.padLeft(20)} '
+                  '${member.name.padLeft(30)} '
                   '${member.memberNumber.toString().padLeft(20)} '
                   '${member.boats.length.toString().padLeft(5)}');
         });
