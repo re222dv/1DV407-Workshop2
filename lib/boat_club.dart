@@ -26,6 +26,9 @@ part 'view/MemberView.dart';
 part 'view/MemberAdministerView.dart';
 part 'view/MemberListView.dart';
 
+const CONTINUE_LOOP = true;
+const EXIT_LOOP = false;
+
 class BoatClubModule extends Module {
     BoatClubModule() {
         bind(BoatAdministerController);

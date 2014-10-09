@@ -17,16 +17,16 @@ class MainController {
 
             switch (_mainView.getChosenMenuItem()) {
                 case MainViewMenuItem.COMPACT_LIST:
-                    return _memberListController.run().then((_) => true);
-                    // Continue looping by returning true when run completes
+                    return _memberListController.run()
+                        .then((_) => CONTINUE_LOOP);
 
                 case MainViewMenuItem.DETAILED_LIST:
-                    return _memberListController.run(detailed: true).then((_) => true);
-                    // Continue looping by returning true when run completes
+                    return _memberListController.run(detailed: true)
+                        .then((_) => CONTINUE_LOOP);
 
                 case MainViewMenuItem.NEW_MEMBER:
-                    return _memberAdministerController.add().then((_) => true);
-                    // Continue looping by returning true when run completes
+                    return _memberAdministerController.add()
+                        .then((_) => CONTINUE_LOOP);
 
                 case MainViewMenuItem.QUIT:
                     exit(0);

@@ -19,35 +19,35 @@ class MemberController {
 
             switch (_memberView.getChosenMenuItem()) {
                 case MemberViewMenuItem.EDIT:
-                    return _memberAdministerController.update(member).then((_) => true);
-                    // Continue looping by returning true when run completes
+                    return _memberAdministerController.update(member)
+                        .then((_) => CONTINUE_LOOP);
 
                 case MemberViewMenuItem.DELETE:
-                    return _memberAdministerController.delete(member).then((_) => false);
-                    // Stop looping by returning false when delete completes
+                    return _memberAdministerController.delete(member)
+                        .then((_) => EXIT_LOOP);
 
                 case MemberViewMenuItem.ADD_BOAT:
-                    return _boatAdministerController.add(member).then((_) => true);
-                    // Continue looping by returning true when add completes
+                    return _boatAdministerController.add(member)
+                        .then((_) => CONTINUE_LOOP);
 
                 case MemberViewMenuItem.EDIT_BOAT:
                     var boat = _memberView.getChosenBoat(member.boats);
                     if (boat != null) {
-                        return _boatAdministerController.update(member, boat).then((_) => true);
-                        // Continue looping by returning true when update completes
+                        return _boatAdministerController.update(member, boat)
+                            .then((_) => CONTINUE_LOOP);
                     }
-                    return true; // Continue looping by returning true
+                    return CONTINUE_LOOP;
 
                 case MemberViewMenuItem.DELETE_BOAT:
                     var boat = _memberView.getChosenBoat(member.boats);
                     if (boat != null) {
-                        return _boatAdministerController.delete(member, boat).then((_) => true);
-                        // Continue looping by returning true when update completes
+                        return _boatAdministerController.delete(member, boat)
+                            .then((_) => CONTINUE_LOOP);
                     }
-                    return true; // Continue looping by returning true
+                    return CONTINUE_LOOP;
 
                 case MemberViewMenuItem.RETURN:
-                    return false; // Stop looping by returning false
+                    return EXIT_LOOP; // Stop looping by returning false
 
                 default:
                     throw new UnimplementedError('The chosen menu item is not implemented in MemberController');

@@ -6,7 +6,7 @@ class BoatAdministerController {
 
     BoatAdministerController(this._memberRepository, this._boatAdministerView);
 
-    add(Member member) {
+    Future add(Member member) {
         var oldMember = member.clone();
         var boat = new Boat.empty();
 
@@ -16,7 +16,7 @@ class BoatAdministerController {
         return _memberRepository.update(oldMember, member);
     }
 
-    update(Member member, Boat boat) {
+    Future update(Member member, Boat boat) {
         var oldMember = member.clone();
 
         _boatAdministerView.administer(boat);
@@ -24,7 +24,7 @@ class BoatAdministerController {
         return _memberRepository.update(oldMember, member);
     }
 
-    delete(Member member, Boat boat) {
+    Future delete(Member member, Boat boat) {
         var oldMember = member.clone();
 
         member.boats.remove(boat);

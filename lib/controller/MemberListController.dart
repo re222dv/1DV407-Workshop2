@@ -23,10 +23,10 @@ class MemberListController {
                 var member = _memberListView.getChosenMember(memberList.toList());
 
                 if (member.isPresent) {
-                    return _memberController.run(member.value).then((_) => true);
-                    // Continue looping by returning true when run completes
+                    return _memberController.run(member.value)
+                        .then((_) => CONTINUE_LOOP);
                 } else {
-                    return false; // Stop looping by returning false
+                    return EXIT_LOOP;
                 }
             })
         );
