@@ -45,6 +45,8 @@ class Member {
         });
     }
 
+    Member copy() => new Member.fromJson(this.toJson());
+
     Map toJson() => {
         NAME: name,
         SOCIAL_SECURITY_NUMBER: socialSecurityNumber,

@@ -18,6 +18,9 @@ class MemberView {
                 case 'd':
                 case 'D':
                     return MemberViewMenuItem.DELETE;
+                case 'b':
+                case 'B':
+                    return MemberViewMenuItem.ADD_BOAT;
                 case 'r':
                 case 'R':
                     return MemberViewMenuItem.RETURN;
@@ -32,15 +35,18 @@ class MemberView {
         print('Boats:');
         member.boats.forEach((boat) => _boatView.render(boat));
 
-        print('');
-        print('Enter E to edit the member, D to delete or R to return');
+        print('\n\n');
+        print('Enter E to edit or D to delete the member');
+        print('Enter B to add a new boat');
+        print('Enter R to return');
     }
 }
 
 class MemberViewMenuItem {
     static const EDIT = const MemberViewMenuItem._(0);
     static const DELETE = const MemberViewMenuItem._(1);
-    static const RETURN = const MemberViewMenuItem._(2);
+    static const ADD_BOAT = const MemberViewMenuItem._(2);
+    static const RETURN = const MemberViewMenuItem._(3);
 
     final int value;
 

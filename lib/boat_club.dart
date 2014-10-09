@@ -7,6 +7,7 @@ import 'package:mongo_dart/mongo_dart.dart';
 import 'package:optional/optional.dart';
 
 part 'controller/BoatController.dart';
+part 'controller/BoatAdministerController.dart';
 part 'controller/MainController.dart';
 part 'controller/MemberController.dart';
 part 'controller/MemberAdministerController.dart';
@@ -20,6 +21,7 @@ part 'model/repositories/MemberRepository.dart';
 part 'model/repositories/Repository.dart';
 
 part 'view/BoatView.dart';
+part 'view/BoatAdministerView.dart';
 part 'view/MainView.dart';
 part 'view/MemberView.dart';
 part 'view/MemberAdministerView.dart';
@@ -28,6 +30,7 @@ part 'view/MemberListView.dart';
 class BoatClubModule extends Module {
     BoatClubModule() {
         bind(BoatController);
+        bind(BoatAdministerController);
         bind(MainController);
         bind(MemberController);
         bind(MemberAdministerController);
@@ -36,6 +39,7 @@ class BoatClubModule extends Module {
         bind(MemberRepository);
 
         bind(BoatView);
+        bind(BoatAdministerView);
         bind(MainView);
         bind(MemberView);
         bind(MemberAdministerView);
